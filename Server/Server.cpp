@@ -3,6 +3,7 @@
 void recvData(SOCKET s, int num) {
 	char buffer[PACKET_SIZE] = { 0 };
 	recv(s, buffer , sizeof buffer , 0);
+	Client[num].second
 
 }
 
