@@ -3,8 +3,13 @@
 void recvData(SOCKET s, int num) {
 	char buffer[PACKET_SIZE] = { 0 };
 	recv(s, buffer , sizeof buffer , 0);
-	Client[num].second
+	Client[num].second = buffer;
 
+	while (TRUE) {
+		ZeroMemory(buffer, sizeof buffer);
+		recv(s, buffer, sizeof buffer, 0);
+		std::cout << Client[num].second << " : " << buffer << std:: endl;
+	}
 }
 
 void ACCEPT(SOCKET &s) {
@@ -28,13 +33,13 @@ int main() {
 	SOCKET server = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
 
 	SOCKADDR_IN addr = { 0 };
-	addr.sin_addr.s_addr = htonl(INADDR_ANY);
+	addr.sin_addr.s_addr = htonl(INADDR_ANY); 
 	addr.sin_port = PORT;
 
 	bind(server, (SOCKADDR*)&addr, sizeof addr);
 	listen(server, SOMAXCONN);
 
-	std::thread(ACCEPT, ref(server).detach();
+	std::thread(ACCEPT, std::ref(server)).detach();
 
 	while (1);
 }
