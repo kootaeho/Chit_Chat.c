@@ -7,7 +7,7 @@ void recvData(SOCKET s, int num) {
 
 	while (TRUE) {
 		ZeroMemory(buffer, sizeof buffer);
-		recv(s, buffer, sizeof buffer, 0);
+		recv(s, buffer, sizeof buffer, 0); //이름 받기
 		std::cout << Client[num].second << " : " << buffer << std:: endl;
 	}
 }
