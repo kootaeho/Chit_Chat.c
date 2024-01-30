@@ -10,3 +10,4 @@
 #include <windows.h>
 #include <thread> //thread
 #include <cstdlib>
+#include <string>

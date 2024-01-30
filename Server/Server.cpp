@@ -35,6 +35,7 @@ int main() {
 	SOCKADDR_IN addr = { 0 };
 	addr.sin_addr.s_addr = htonl(INADDR_ANY); 
 	addr.sin_port = PORT;
+	addr.sin_family = AF_INET;
 
 	bind(server, (SOCKADDR*)&addr, sizeof addr);
 	listen(server, SOMAXCONN);

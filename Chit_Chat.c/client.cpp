@@ -19,8 +19,21 @@ int main() {
 	SOCKADDR_IN addr = { 0 };
 	addr.sin_addr.s_addr = inet_addr(IP);
 	addr.sin_port = PORT;
-
+	addr.sin_family = AF_INET;
 
 	while (connect(server, (SOCKADDR*)&addr, sizeof addr));
-	send(server, name, sizeof name, 0);
+	send(server, name, sizeof name, 0);  //이름 보내기
+
+	std::string str;
+
+	while (TRUE) {
+		std::cin.ignore();
+		ZeroMemory(name, sizeof name);
+		std::getline(std::cin, str);
+		for (int i = 0; i < str.size(); i++) {
+			name[i] = str[i];
+		}
+		send(server, name, sizeof name, 0);
+
+	}
 }
