@@ -9,5 +9,7 @@
 #include <winsock2.h>
 #include <windows.h>
 #include <thread> //thread
+#include <vector>	//vector
+#include <utility>	//pair
 #include <cstdlib>
 #include <string>
